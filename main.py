@@ -16,6 +16,13 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
+    # After initializing pygame, but before the gameloop starts, create: 
+    # A new pygame.time.Clock object.
+    clock = pygame.time.Clock()
+
+    # A dt variable set to 0.
+    dt = 0
+
     # assignment 5:  Create the game loop
     while True:
         # assignment 8: 
@@ -28,6 +35,10 @@ def main():
 
         screen.fill(BLACK)
         pygame.display.flip()
+        # Divide the return value by 1000 (to convert from milliseconds to seconds) and 
+        # save it into the dt variable 
+        dt = (clock.tick(60)) / 1000
+     
     pygame.quit()
 
 if __name__ == "__main__":
