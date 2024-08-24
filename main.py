@@ -37,7 +37,9 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        
+        # Hook the update method into the game loop by 
+        # calling it on the player object each frame before rendering.
+        player1.update(dt)
 
         screen.fill(BLACK)
 

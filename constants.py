@@ -11,3 +11,6 @@ BLACK = 000000
 
 # player
 PLAYER_RADIUS = 20
+
+# moving around
+PLAYER_TURN_SPEED = 300
