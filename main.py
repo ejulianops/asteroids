@@ -27,6 +27,11 @@ def main():
     # A dt variable set to 0.
     dt = 0
 
+    # groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     # assignment 5:  Create the game loop
     while True:
         # assignment 8: 
@@ -41,32 +46,35 @@ def main():
         # calling it on the player object each frame before rendering.
         player1.update(dt)
 
+        # iterate over all "updatables" and .update() them
+        for item in updatable:
+            item.update(dt)
+
+
         screen.fill(BLACK)
 
         # we need to re-render the player on the screen each frame, meaning inside our game loop. 
         # Use the player.draw(screen) method
         player1.draw(screen)
 
+        # 
+        for item in drawable:
+            item.draw(screen)
+
         pygame.display.flip()
         # Divide the return value by 1000 (to convert from milliseconds to seconds) and 
         # save it into the dt variable 
         dt = (clock.tick(60)) / 1000
-     
+    
     pygame.quit()
-
-
 
 if __name__ == "__main__":
     main()
 
+# # sltn
 
-
-
-# sltn
-
-import pygame
-from constants import *
-
+# import pygame
+# from constants import *
 
 # def main():
 #     pygame.init()
