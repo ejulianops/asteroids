@@ -1,9 +1,13 @@
 # assignment 1: import pygame at the top of your main.py file.
 import pygame
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 # assignment 3: Ensure our predefined constants imported at the top of your file
 from constants import *
+
+
 
 def main():
 
@@ -31,6 +35,11 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
+
+    asteroid = pygame.sprite.Group()
+    Asteroid.containers = (asteroid, updatable, drawable)
+
+    AsteroidField.containers = (updatable)
 
     # assignment 5:  Create the game loop
     while True:
