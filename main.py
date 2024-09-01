@@ -3,11 +3,10 @@ import pygame
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+import sys
 
 # assignment 3: Ensure our predefined constants imported at the top of your file
 from constants import *
-
-
 
 def main():
 
@@ -36,10 +35,11 @@ def main():
     drawable = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
 
-    asteroid = pygame.sprite.Group()
-    Asteroid.containers = (asteroid, updatable, drawable)
+    asteroids = pygame.sprite.Group()
+    Asteroid.containers = (asteroids, updatable, drawable)
 
     AsteroidField.containers = (updatable)
+    asteroid_field = AsteroidField()
 
     # assignment 5:  Create the game loop
     while True:
@@ -54,6 +54,16 @@ def main():
         # Hook the update method into the game loop by 
         # calling it on the player object each frame before rendering.
         player1.update(dt)
+
+        # After the update step in your game loop, 
+        # iterate over all of the objects in your asteroids group. 
+        # Check if any of them collide with the player. 
+        # If a collision is detected, the program should print Game over! and immediately exit the program.
+        for asteroid in asteroids:
+            if asteroid.collision(player1):
+                print("Game over!")
+                pygame.quit()
+                sys.exit()
 
         # iterate over all "updatables" and .update() them
         for item in updatable:
