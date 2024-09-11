@@ -1,4 +1,6 @@
 import pygame
+#from shot import Shot
+from constants import PLAYER_SHOOT_SPEED
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):

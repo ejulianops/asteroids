@@ -3,7 +3,9 @@ import pygame
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 import sys
+from constants import PLAYER_SHOOT_SPEED
 
 # assignment 3: Ensure our predefined constants imported at the top of your file
 from constants import *
@@ -33,13 +35,17 @@ def main():
     # groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
-    Player.containers = (updatable, drawable)
-
+    shots = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
-    Asteroid.containers = (asteroids, updatable, drawable)
 
+    Player.containers = (updatable, drawable)    
+    Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable)
+    Shot.containers = (updatable, drawable, shots)
+
     asteroid_field = AsteroidField()
+
+    
 
     # assignment 5:  Create the game loop
     while True:
@@ -50,15 +56,25 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    player1.shoot(shots)
+                    
 
         # Hook the update method into the game loop by 
         # calling it on the player object each frame before rendering.
         player1.update(dt)
 
+        # Update shots
+        shots.update(dt)
+
+        
+
         # After the update step in your game loop, 
         # iterate over all of the objects in your asteroids group. 
         # Check if any of them collide with the player. 
-        # If a collision is detected, the program should print Game over! and immediately exit the program.
+        # If a collision is detected, the program should print Game over! 
+        # and immediately exit the program.
         for asteroid in asteroids:
             if asteroid.collision(player1):
                 print("Game over!")
@@ -69,8 +85,18 @@ def main():
         for item in updatable:
             item.update(dt)
 
-
         screen.fill(BLACK)
+        
+        # Draw shots
+        # shots.draw(screen)
+        screen.fill(BLACK)
+
+        player1.draw(screen)
+        for item in drawable:
+            item.draw(screen)
+        shots.draw(screen)  # Move this here
+
+        pygame.display.flip()
 
         # we need to re-render the player on the screen each frame, meaning inside our game loop. 
         # Use the player.draw(screen) method
