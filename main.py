@@ -80,6 +80,10 @@ def main():
                 print("Game over!")
                 pygame.quit()
                 sys.exit()
+            for bullet in shots:
+                if asteroid.collision(bullet):
+                    bullet.kill()
+                    asteroid.kill()
 
         # iterate over all "updatables" and .update() them
         for item in updatable:
