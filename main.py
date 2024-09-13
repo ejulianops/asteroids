@@ -83,7 +83,7 @@ def main():
             for bullet in shots:
                 if asteroid.collision(bullet):
                     bullet.kill()
-                    asteroid.kill()
+                    asteroid.split(dt, screen)
 
         # iterate over all "updatables" and .update() them
         for item in updatable:
