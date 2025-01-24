@@ -25,13 +25,13 @@ In Asteroids you have to survive flying through an asteroid belt, dodging and sh
 - Run the program with `python3 main.py`.
 
 **How to play:**
-- (what controls do you plan to implement?)
+- (what controls to implement?)
 - (Will there be keyboard or mouse inputs?)
-- (consider mentioning game difficulty, scoring system, or any power-ups you might include.)
+- (game difficulty, scoring system, or any power-ups)
 - (ANY OTHER INFO THE USER SHOULD KNOW BEFORE START PLAYING)
 
 **Troubleshooting:**
-- (what common issues do you anticipate users might face?)
+- (what common issues users might face?)
 -
 -
 
@@ -40,4 +40,4 @@ In Asteroids you have to survive flying through an asteroid belt, dodging and sh
 - (screenshot)
 - (screenshot)
 
-This guided project is part of [boot.dev](https://www.boot.dev/tracks/backend) curriculum.
+Guided project from boot.dev.
